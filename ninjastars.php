@@ -25,6 +25,49 @@
  * Domain Path:       /languages
  */
 
+
+/* 
+	UPDATE NOTES
+
+-	v 1.7 (22nd May, 2019 by Zaman)
+		1. Converted to OOP framework
+		2. Increased Security 
+		3. Introduced custom taxonomies
+		4. Removed old redirection for single and archive view
+		5. Introduced template support from plugin itself for single and archive views
+		6. Yoast SEO sitemap Fix for review title
+		7. Improved shortcodes internal layout & bug fixing
+		8. Reduced databse query load
+		9. Some other minor fixes
+
+-	v 1.6 (16th Nov, 2018)
+	Fixed the layout issue when placing contents above or bottom [ns_revies] shortcode
+
+-	v 1.5 (24th Sep, 2018)
+	If site URL has the string 'ninjastars', then it will be redirected to Home Page
+
+-   v 1.4
+	added "Show Review Publish date" on settings page which will show the review publish date at the right side of the review box (20th Mar 2018)
+
+	v1.3 
+-	added review categories	
+
+	v1.1 
+- Removed Schema markup for "rated X out of Y reviews"
+- Removed Ninja Stars widget (was causing template errors)
+
+TO DO LIST 
+-----------
+• Default order options (asc vs desc)
+• "Enable Random Review Order?" option
+• REVIEWER LOCATION
+• REVIEWER WEBSITE
+• REVIEWER BUSINESS/COMPANY
+• WIDGET CONTENT BG STYLE
+• WIDGET FOOTER BG STYLE
+	
+*/
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
