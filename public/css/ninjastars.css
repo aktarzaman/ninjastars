@@ -1,0 +1,215 @@
+
+#ns_reviews_page {
+
+}
+
+.ns-head {
+
+}
+
+.ns-body {
+
+}
+
+.ns-review {
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 30px; 
+}
+
+.ns-left {
+	padding: 20px 10px;
+	display: table-cell; 
+}
+
+.ns-rating {
+	width: 90px; 
+}
+
+.ns-logo {
+	margin-bottom: 10px;
+	text-align: center; 
+}
+
+.ns-logo > img {
+	max-width: 90px; 
+}
+	
+.ns-right {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	padding: 20px; }
+
+.ns-right > h4 {
+	text-align: center; }
+
+.ns-right > h4 > span {
+	font-size: 21px; }
+
+.ns-right > h4 > span:before
+.ns-right > h4 > span:after {
+	content: '"'; }
+
+
+span.ns-authorname,
+span.ns-widget-authorname {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+span.ns-authorname {
+	font-size: 20px;	
+	text-align: center;
+	padding: 0 3%; 
+}
+
+span.ns-widget-authorname {
+	font-size: 18px;
+	text-align: left;
+}
+
+span.ns-title {
+	display: block;
+	font-size: 15px;
+	font-weight: 400;
+	text-align: center;
+	padding: 0 3%; }
+
+p.ns-content,
+p.ns-widget-content {
+	font-style: italic;
+	line-height: 1.5em;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+
+
+p.ns-content {
+	padding: 0 3%;
+	text-align: center;
+	font-size: 18px;
+}
+
+p.ns-content {
+	font-style: italic;
+	font-size: 18px;
+	line-height: 1.5em;
+	margin-bottom: 15px;
+	padding: 0 3%;
+	text-align: center;
+	width: 100%; 
+}
+
+.ns-left p.ns-content { 
+	text-align: left; 
+}
+
+.ns-center p.ns-content { 
+	text-align: center;
+	padding: 0 3%; 
+}
+
+h2#ns_biz_title {
+	font-size: 24px;
+	margin: 0 0 10px; 
+}
+
+h3#ns_biz_ratings {
+	font-size: 20px;
+	margin: 0 0 10px; 
+}
+
+img.ns-avg-rating {
+	display: inline-block;
+	width: 120px;
+	margin-top: -6px; 
+}
+
+
+
+
+
+
+
+
+
+.ns-single-schema {
+	margin-top: 10px;
+	text-align: center;
+	font-style: italic; 
+}
+
+.ns-single-schema a {
+	text-decoration: underline; 
+}
+
+/**************************************
+
+**************************************/
+
+/**************************************
+NS WIDGET
+**************************************/
+
+.ns-widget-content p.description {
+	font-style: italic; 
+	margin: 0; 
+}
+
+.ns-widget-content {
+	padding: 10px; 
+}
+
+.ns-widget-author {	
+	font-weight: 800;
+	display: block; 
+}
+
+.ns-widget-schema {	
+	text-align: center;
+	display: block;	
+	margin-bottom: 10px; 
+}
+
+.ns-widget-footer {	
+	padding: 10px;
+	margin-bottom: 10px; 
+}
+
+.ns-widget-rating > img {
+	max-width: 90px;
+	margin-bottom: 5px; 
+}
+
+p.ns-widget-content {
+	font-size: 14px;
+}
+
+.ns-widget-info .ns-rating > img {
+	display: block;	
+	margin: 10px auto;
+}
+
+.ns-widget-info .ns-logo > img {
+	margin-bottom: 0;
+}
+
+.ns-widget-info {
+	float: left;
+    width: 100%;
+    clear: both;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}	
+
+.ns-widget-info .ns-rating {
+	width: 100%;
+}
+	
+.ns-widget-info .ns-rating > img {
+	display: block;	
+	margin: 0 auto;
+}

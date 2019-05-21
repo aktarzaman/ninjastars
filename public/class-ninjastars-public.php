@@ -51,6 +51,7 @@ class Ninjastars_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->load_dependencies();
 
 	}
 
@@ -73,7 +74,7 @@ class Ninjastars_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ninjastars-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'ninjastars-styles', plugin_dir_url( __FILE__ ) . 'css/ninjastars.css', array(), $this->version, 'all' );
 
 	}
 
@@ -100,4 +101,37 @@ class Ninjastars_Public {
 
 	}
 
+	public function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'public/class-ninjastars-shortcodes.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'public/class-ninjastars-template-loader.php';
+	}
+
+
+	public function ninjastars_insert_styles () {
+		global $post;
+		$theme_color = get_option( 'ninjastars_color', '#CCCCCC' );
+		$bg_color = get_option( 'ninjastars_rcolor', 'transparent' );
+		$footer_color = get_option( 'ninjastars_fcolor', '#FFFFFF' );
+		ob_start();
+		?>
+		<!-- NinjaStars Custom Styles -->
+		<style type="text/css"> 
+			.ns-left, 
+			.ns-widget-footer,
+			.ns-widget-info { 
+				background-color: <?php echo $theme_color ?>; 
+			} 
+			.ns-right, 
+			.ns-widget-content { 
+				background-color: <?php echo $bg_color ?>; 
+			}
+			.ns-widget-author { 
+				color: <?php echo $footer_color ?>; 
+			}
+		</style>
+		<?php
+		$output .= ob_get_clean();
+		echo $output;
+
+	} # ns_insert_styles()
 }

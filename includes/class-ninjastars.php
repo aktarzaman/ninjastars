@@ -153,9 +153,25 @@ class Ninjastars {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Ninjastars_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_options = new Ninjastars_Options( $this->get_plugin_name(), $this->get_version() );
+		$plugin_cpt = new Ninjastars_Custom_Post_Type( $this->get_plugin_name(), $this->get_version() );
+		$plugin_metabox = new Ninjastars_Meta_Boxes( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_head', $plugin_admin, 'ninjastars_admin_styles' );
+		$this->loader->add_action( 'pre_get_posts', $plugin_admin, 'ninjastars_archive', 1);
+		$this->loader->add_action( 'admin_head', $plugin_admin, 'ninjastars_disable_editor', 10, 1);
+		$this->loader->add_filter( 'manage_edit-ninjastars_columns', $plugin_admin, 'ninjastars_postlist_init_custom_cols',10, 1);
+		$this->loader->add_action( 'manage_ninjastars_posts_custom_column', $plugin_admin, 'ninjastars_postlist_add_custom_cols', 10, 2);
+		
+		$this->loader->add_action( 'init', $plugin_cpt, 'ninjastars_post_type' );
+		
+		$this->loader->add_action( 'add_meta_boxes', $plugin_metabox, 'ninjastars_add_meta_boxes' );
+		$this->loader->add_action( 'save_post', $plugin_metabox, 'ninjastars_save_post_data', 10, 1 );
+		
+		$this->loader->add_action( 'admin_menu', $plugin_options, 'ninjastars_init_options_page' );
+		$this->loader->add_action( 'admin_init', $plugin_options, 'ninjastars_init_settings_fields' );
 
 	}
 
@@ -169,9 +185,19 @@ class Ninjastars {
 	private function define_public_hooks() {
 
 		$plugin_public = new Ninjastars_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_shortcode = new Ninjastars_Shortcodes( $this->get_plugin_name(), $this->get_version() );
+		$plugin_template = new Ninjastars_Template_Loader( $this->get_plugin_name(), $this->get_version(), array( 
+				'ninjastars',
+			) );
+
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'ninjastars_insert_styles' );
+		
+		
+		$this->loader->add_action( 'init', $plugin_shortcode, 'ninjastars_shortcode_list' );
+		$this->loader->add_filter( 'template_include', $plugin_template, 'ninjastars_include_templates' );
 
 	}
 

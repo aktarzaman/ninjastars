@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       NinjaStars
  * Plugin URI:        http://socialmedianinjas.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       hReview 0.4 microformat plugin jam-packed with Star Power. 
+ * Version:           1.7.0
  * Author:            The 108 Group, LLC
  * Author URI:        http://socialmedianinjas.com
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'NINJASTARS_VERSION', '1.0.0' );
+define( 'NINJASTARS_VERSION', '1.7.0' );
 
 /**
  * The code that runs during plugin activation.

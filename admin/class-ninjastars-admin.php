@@ -51,7 +51,7 @@ class Ninjastars_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
+		$this->load_dependencies();
 	}
 
 	/**
@@ -99,5 +99,77 @@ class Ninjastars_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ninjastars-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+
+	public function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-custom-post-type.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-meta-boxes.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-options.php';
+	}
+
+	// Show all Website Gallery Posts on archive page
+	public function ninjastars_archive( $query ) {
+	  if ( is_post_type_archive( 'ninjastars' ) ) {
+	    $query->set( 'posts_per_page', -1 );
+	    return;
+	  }
+	}
+
+
+	public function ninjastars_disable_editor() {
+		if ( get_post_type() == 'ninjastars' ) :
+			remove_post_type_support( 'ninjastars', 'editor' );
+		endif;
+	}
+
+
+	public function ninjastars_postlist_init_custom_cols ( $columns ) {
+    	unset( $columns['title'] );
+    	unset( $columns['author'] );
+    	unset( $columns['date'] );
+		return array_merge(
+			$columns,
+			array(
+				'review_author' => 'Author',
+				'review_rating' => 'Rating',
+				'review_summary' => 'Summary',
+				'date' => 'Review Posted'
+			)
+			//$columns
+		);
+
+	} // postlist_init_custom_cols ( $columns )
+
+
+
+	public function ninjastars_postlist_add_custom_cols ( $cols, $post_id ) {
+		$meta = get_post_custom( $post_id );
+		switch ( $cols ) :
+			case 'review_author' :
+				$author = "<a href=\"post.php?post=" . $post_id . "&action=edit\">" . $meta['review_author_val'][0] . "</a>";
+				echo $author;
+				break;
+			case 'review_rating' :
+				$rating = $meta['review_rating_val'][0];
+				echo "<img src=\"" . plugins_url( "/imgs/$rating-stars-xs.png", __FILE__ ) . "\" />";
+				break;
+			case 'review_summary' :
+				$summary = $meta['review_summary_val'][0];
+				echo $summary;
+				break;
+		endswitch;
+	} # postlist_add_custom_cols ( $cols, $post_id )
+
+
+	public function ninjastars_admin_styles () {
+		?>
+		<style>
+			.post-type-ninjastars th[id*="wpseo"],
+			.post-type-ninjastars th[class*="wpseo"],
+			.post-type-ninjastars td[class*="wpseo"] {
+				display: none !important; }
+		</style>
+		<?php
+	} // ns_admin_styles ()
 
 }
