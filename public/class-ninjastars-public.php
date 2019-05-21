@@ -109,6 +109,7 @@ class Ninjastars_Public {
 
 	public function ninjastars_insert_styles () {
 		global $post;
+		$output = '';
 		$theme_color = get_option( 'ninjastars_color', '#CCCCCC' );
 		$bg_color = get_option( 'ninjastars_rcolor', 'transparent' );
 		$footer_color = get_option( 'ninjastars_fcolor', '#FFFFFF' );

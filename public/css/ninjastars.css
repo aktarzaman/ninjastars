@@ -16,6 +16,33 @@
 	vertical-align: middle;
 	margin-bottom: 30px; 
 }
+.ns-reviews-archive-wrapper,
+.ns-reviews-single-wrapper {
+	max-width:1170px;
+	width:100%;
+	display: block;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 0 auto 50px;
+	float: none;
+}
+
+.ns-reviews-archive-wrapper {
+	margin-bottom: 0;
+}
+
+
+.ns-reviews-archive-wrapper + .ns-single-schema {
+	margin-bottom: 50px;
+}
+
+.ns-reviews-archive-wrapper .ns-single{
+	margin-bottom: 50px;
+}
+
+.ns-reviews-archive-wrapper .ns-single:last-child {
+	margin-bottom: 0;
+}
 
 .ns-left {
 	padding: 20px 10px;

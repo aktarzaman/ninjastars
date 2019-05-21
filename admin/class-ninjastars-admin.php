@@ -124,7 +124,6 @@ class Ninjastars_Admin {
 
 
 	public function ninjastars_postlist_init_custom_cols ( $columns ) {
-    	unset( $columns['title'] );
     	unset( $columns['author'] );
     	unset( $columns['date'] );
 		return array_merge(

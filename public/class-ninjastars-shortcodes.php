@@ -174,6 +174,7 @@ class Ninjastars_Shortcodes {
 				$worst_rating = $rating;
 		endforeach;
 		$avg_rating = ( $total_rating / $review_count );
+		wp_reset_postdata();
 		$biz_name = get_bloginfo( 'name' );
 		$ns_readmore = get_option( 'ninjastars_readmore', FALSE );
 		$args = array(
@@ -197,7 +198,7 @@ class Ninjastars_Shortcodes {
 		wp_reset_postdata();
 		ob_start();
 		?>
-		<div class="ns-single hreview">
+			<div class="ns-single hreview">
 				<div class="ns-left">
 					<div class="item">
 						<div class="fn">

@@ -60,7 +60,6 @@ class Ninjastars_Meta_Boxes {
 		$val = isset( $values['review_author_val'] ) ? esc_attr( $values['review_author_val'][0] ) : '';
 		wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
 		?>
-			<style> #post-body-content { display: none; } </style>
 			<p class="description">What is the name of the review author?</p>
 			<input type="text" name="review_author_val" class="widefat" style="width:100%;" value="<?php echo $val ?>" placeholder="Enter Author Name" />
 		<?php
