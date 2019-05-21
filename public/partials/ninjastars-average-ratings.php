@@ -14,9 +14,12 @@
 ?>
 
 <?php
-
+$round_rating= 1;
 $review_count = wp_count_posts('ninjastars');
 $review_count = $review_count->publish;
+$total_rating = 0;
+$best_rating = 0;
+$worst_rating = 5;
 
 $args = array(
 	'post_type' 		=> 'ninjastars',
@@ -26,9 +29,7 @@ $args = array(
 );
 
 $reviews = get_posts( $args );
-$total_rating = 0;
-$best_rating = 0;
-$worst_rating = 5;
+
 foreach ( $reviews as $review ) : 
 	setup_postdata( $review );
 	$meta = get_post_custom( $review->ID );
@@ -41,10 +42,21 @@ foreach ( $reviews as $review ) :
 endforeach;
 $avg_rating = ( $total_rating / $review_count );
 wp_reset_postdata();
+
+# Calculate Round Rating
+if ( $avg_rating < 1.4 ) $round_rating = 1;
+if ( $avg_rating >= 1.4 && $avg_rating < 1.8 ) $round_rating = "1-5";
+if ( $avg_rating >= 1.8 && $avg_rating < 2.3 ) $round_rating = "2";
+if ( $avg_rating >= 2.3 && $avg_rating < 2.8 ) $round_rating = "2-5";
+if ( $avg_rating >= 2.8 && $avg_rating < 3.3 ) $round_rating = "3";
+if ( $avg_rating >= 3.3 && $avg_rating < 3.8 ) $round_rating = "3-5";
+if ( $avg_rating >= 3.8 && $avg_rating < 4.3 ) $round_rating = "4";
+if ( $avg_rating >= 4.3 && $avg_rating < 4.8 ) $round_rating = "4-5";
+if ( $avg_rating >= 4.8) $round_rating = "5";
 ?>
 
 <div class="ns-single-schema">
 	<span class="ns-biz-title" itemprop="name"><?php echo $biz_name ?></span> is rated 
-	<span><?php echo round($avg_rating, 1); ?></span> stars over 
+	<span><img src="<?php echo plugins_url( '../imgs/' . $round_rating . '-stars-md.png' , __FILE__ ) ?>" class="ns-avg-rating" /></span> stars over 
 	<span><?php echo $review_count ?></span> reviews.
 </div>

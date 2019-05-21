@@ -33,9 +33,37 @@ class Ninjastars_Custom_Post_Type {
             'menu_position'         => 40,
             'exclude_from_search'   => true,
             'show_ui'               => true,
-            'taxonomies'            => array( 'category' ),
             );
 
         register_post_type('ninjastars', $args);
-    }	
+    }
+
+
+    public function ninjastars_taxonomy() {
+        $labels = array(
+            'name'              => 'Reviews Category',
+            'singular_name'     => 'Reviews Category',
+            'search_items'      => 'Search Reviews Category',
+            'all_items'         => 'All Reviews Categories',
+            'parent_item'       => 'Parent Reviews Category',
+            'parent_item_colon' => 'Parent Reviews Category:',
+            'edit_item'         => 'Edit Reviews Category',
+            'update_item'       => 'Update Reviews Category',
+            'add_new_item'      => 'Add New Reviews Category',
+            'new_item_name'     => 'New Reviews Category Name',
+            'menu_name'         => 'Reviews Category',
+            );
+
+        $args = array(
+            'hierarchical' => true,
+            'labels' => $labels,
+            'show_ui' => true,
+            'has_archive'   => true,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'ninjastars-category')
+        );
+
+        register_taxonomy('ninjastars-category', array('ninjastars'), $args);
+    }
 }

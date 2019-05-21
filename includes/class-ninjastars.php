@@ -166,6 +166,7 @@ class Ninjastars {
 		$this->loader->add_action( 'manage_ninjastars_posts_custom_column', $plugin_admin, 'ninjastars_postlist_add_custom_cols', 10, 2);
 		
 		$this->loader->add_action( 'init', $plugin_cpt, 'ninjastars_post_type' );
+		$this->loader->add_action( 'init', $plugin_cpt, 'ninjastars_taxonomy' );
 		
 		$this->loader->add_action( 'add_meta_boxes', $plugin_metabox, 'ninjastars_add_meta_boxes' );
 		$this->loader->add_action( 'save_post', $plugin_metabox, 'ninjastars_save_post_data', 10, 1 );
