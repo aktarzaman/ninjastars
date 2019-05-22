@@ -16,7 +16,7 @@
  * Plugin Name:       NinjaStars
  * Plugin URI:        http://socialmedianinjas.com
  * Description:       hReview 0.4 microformat plugin jam-packed with Star Power. 
- * Version:           1.7.0
+ * Version:           1.8.0
  * Author:            The 108 Group, LLC
  * Author URI:        http://socialmedianinjas.com
  * License:           GPL-2.0+
@@ -28,6 +28,8 @@
 
 /* 
 	UPDATE NOTES
+	v 1.8 (23rd May, 2019 by Zaman)
+		1. Added 'NinjaStars Widget' on appearance->widgets dashboard
 
 -	v 1.7 (22nd May, 2019 by Zaman)
 		1. Converted to OOP framework
