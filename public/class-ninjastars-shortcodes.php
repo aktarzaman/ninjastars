@@ -435,7 +435,7 @@ class Ninjastars_Shortcodes {
 		$output .= ob_get_clean();
 		endforeach;
 		wp_reset_postdata();
-		return $output;
+		printf( '%s', $args[ 'after_widget' ] );
 
 	} // sc_ns_widget ()
 

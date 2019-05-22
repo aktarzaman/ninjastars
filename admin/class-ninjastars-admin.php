@@ -105,6 +105,7 @@ class Ninjastars_Admin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-custom-post-type.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-meta-boxes.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-options.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/class-ninjastars-widget.php';
 	}
 
 	// Show all Website Gallery Posts on archive page

@@ -156,6 +156,7 @@ class Ninjastars {
 		$plugin_options = new Ninjastars_Options( $this->get_plugin_name(), $this->get_version() );
 		$plugin_cpt = new Ninjastars_Custom_Post_Type( $this->get_plugin_name(), $this->get_version() );
 		$plugin_metabox = new Ninjastars_Meta_Boxes( $this->get_plugin_name(), $this->get_version() );
+		$plugin_widget = new Ninjastars_Widget();
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -173,6 +174,7 @@ class Ninjastars {
 		
 		$this->loader->add_action( 'admin_menu', $plugin_options, 'ninjastars_init_options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_options, 'ninjastars_init_settings_fields' );
+		$this->loader->add_action( 'widgets_init', $plugin_widget, 'ninjastars_load_widget' );
 
 	}
 
