@@ -157,8 +157,9 @@ class Ninjastars_Shortcodes {
 			</div>
 			<?php
 			$output .= ob_get_clean();
+			wp_reset_postdata();
 		endforeach;
-		wp_reset_postdata();
+		
 		$output .= "</div></div>";
 		return $output;
 	} # sc_ns_reviews()
@@ -245,8 +246,10 @@ class Ninjastars_Shortcodes {
 		if ( $avg_rating >= 4.8) $round_rating = "5";
 
 		$reviews = get_posts( $args );
-
+		$i = 0;
 		foreach ( $reviews as $review ) : 
+			$i++;
+			if($i == 1){
 			setup_postdata( $review );
 			$meta = get_post_custom( $review->ID );
 			$review_summary = ( $meta['review_summary_val'][0] != '' ? $meta['review_summary_val'][0] : FALSE );
@@ -292,8 +295,10 @@ class Ninjastars_Shortcodes {
 			</div>
 		<?php
 		$output .= ob_get_clean();
-		endforeach;
 		wp_reset_postdata();
+		}
+		endforeach;
+		
 		return $output;
 
 	} // sc_ns_review ()
@@ -381,8 +386,10 @@ class Ninjastars_Shortcodes {
 		if ( $avg_rating >= 4.8) $round_rating = "5";
 
 		$reviews = get_posts( $args );
-
+		$i = 0;
 		foreach ( $reviews as $review ) : 
+			$i++;
+			if($i ==1 ) {
 			setup_postdata( $review );
 			$meta = get_post_custom( $review->ID );
 			$review_summary = ( $meta['review_summary_val'][0] != '' ? $meta['review_summary_val'][0] : FALSE );
@@ -433,9 +440,11 @@ class Ninjastars_Shortcodes {
 			</div>
 		<?php
 		$output .= ob_get_clean();
-		endforeach;
 		wp_reset_postdata();
-		printf( '%s', $args[ 'after_widget' ] );
+		}
+		endforeach;
+		
+		return $output;
 
 	} // sc_ns_widget ()
 

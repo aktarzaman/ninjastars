@@ -98,7 +98,12 @@ class NinjaStars_Widget extends WP_Widget {
 
 		$reviews = get_posts( $rand_args );
 
+
+		$i = 0;
+
 		foreach ( $reviews as $review ) :
+			$i++;
+			if( $i ==1 ) {
 			setup_postdata( $review );
 			$meta = get_post_custom( $review->ID );
 			$review_summary = ( $meta['review_summary_val'][0] != '' ? $meta['review_summary_val'][0] : FALSE );
@@ -139,8 +144,10 @@ class NinjaStars_Widget extends WP_Widget {
 			</span> <!-- end of aggregateRating -->
 
 			<?php 
+			wp_reset_postdata();
+		}
 		endforeach;
-		wp_reset_postdata();
+		
 		printf( '%s', $args[ 'after_widget' ] );
 	}
 	
