@@ -75,9 +75,9 @@ class NinjaStars_Widget extends WP_Widget {
 			'order'				=> 'DESC'
 		);
 
-		$reviews = get_posts( $all_args );
+		$all_reviews = get_posts( $all_args );
 
-		foreach ( $reviews as $review ) : 
+		foreach ( $all_reviews as $review ) : 
 			setup_postdata( $review );
 			$meta = get_post_custom( $review->ID );
 			$rating = $meta['review_rating_val'][0];
